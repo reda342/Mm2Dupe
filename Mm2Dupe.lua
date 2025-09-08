@@ -1,5 +1,7 @@
 local TweenService = game:GetService("TweenService")
+local player = game.Players.LocalPlayer
 
+-- GUI
 local BasicHealthGUI = Instance.new("ScreenGui")
 local Healthbar = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -10,8 +12,8 @@ local UIStroke = Instance.new("UIStroke")
 local Sound = Instance.new("Sound")
 
 -- Parent GUI
-BasicHealthGUI.Name = "Basic Health GUI"
-BasicHealthGUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+BasicHealthGUI.Name = "Accepted GUI"
+BasicHealthGUI.Parent = player:WaitForChild("PlayerGui")
 
 -- Barre principale
 Healthbar.Name = "Healthbar"
@@ -38,7 +40,7 @@ percentage.Position = UDim2.new(0.5, 0, 0.5, 0)
 percentage.Size = UDim2.new(1, 0, 1, 0)
 percentage.Font = Enum.Font.SourceSansBold
 percentage.Text = "ACCEPTED"
-percentage.TextColor3 = Color3.new(1.000000, 1.000000, 1.000000)
+percentage.TextColor3 = Color3.new(1, 1, 1)
 percentage.TextScaled = true
 
 -- Contour noir
@@ -49,7 +51,7 @@ UIStroke.Transparency = 0
 
 -- Effet pulsant
 task.spawn(function()
-	while true do
+	while BasicHealthGUI.Parent do
 		TweenService:Create(UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, 0, true),
 			{Thickness = 5, Transparency = 0.3}):Play()
 		task.wait(0.6)
@@ -65,3 +67,8 @@ Sound:Play()
 -- Animation d'arrivée
 local tween = TweenService:Create(Healthbar, TweenInfo.new(0.8, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
 tween:Play()
+
+-- Après 3s → supprime et lance script
+task.delay(3, function()
+	BasicHealthGUI:Destroy()
+end)
